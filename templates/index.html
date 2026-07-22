@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CO₂ Emission Prediction</title>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card">
+        <h1>CO₂ Emission Prediction</h1>
+        <p class="subtitle">
+            Predict automobile CO₂ emissions using an ensemble machine learning model
+        </p>
+
+        <form action="/predict" method="post">
+
+            <div class="grid">
+
+                <div class="field">
+                    <label>Engine Size (Litres)</label>
+                    <input type="number" name="engine" step="0.1" min="0.6" max="8" required>
+                </div>
+
+                <div class="field">
+                    <label>Cylinders</label>
+                    <select name="cylinders" required>
+                        <option value="">Select</option>
+                        <option>3</option><option>4</option><option>5</option>
+                        <option>6</option><option>8</option><option>10</option><option>12</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Transmission</label>
+                    <select name="transmission" required>
+                        <option value="">Select</option>
+                        <option>Automatic</option>
+                        <option>Manual</option>
+                        <option>Automated Manual</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>Fuel Type</label>
+                    <select name="fuel" required>
+                        <option value="">Select</option>
+                        <option>Petrol</option>
+                        <option>Diesel</option>
+                        <option>Ethanol (E85)</option>
+                        <option>Natural Gas</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label>City Consumption (L/100 km)</label>
+                    <input type="number" name="city" step="0.1" min="1" max="30" required>
+                </div>
+
+                <div class="field">
+                    <label>Highway Consumption (L/100 km)</label>
+                    <input type="number" name="highway" step="0.1" min="1" max="25" required>
+                </div>
+
+                <div class="field">
+                    <label>Combined Consumption (L/100 km)</label>
+                    <input type="number" name="combined" step="0.1" min="1" max="28" required>
+                </div>
+
+            </div>
+
+            <button type="submit">Predict CO₂ Emissions</button>
+
+        </form>
+    </div>
+</div>
+</body>
+</html>

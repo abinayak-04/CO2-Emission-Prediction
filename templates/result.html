@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prediction Result</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+<div class="container">
+    <div class="card result-card">
+
+        <h1>Prediction Result</h1>
+
+        <!-- VEHICLE DETAILS -->
+        <h3>Vehicle Details</h3>
+        <div class="details-grid">
+            {% for key, value in inputs.items() %}
+                <div class="label">{{ key }}</div>
+                <div class="value">{{ value }}</div>
+            {% endfor %}
+        </div>
+
+
+
+        <!-- CO2 RESULT -->
+        <div class="prediction-box">
+            <span><b>Estimated CO₂ Emission</b></span>
+            <h2>{{ prediction }} g/km</h2>
+
+            <!-- CURRENT CATEGORY -->
+            <div class="emission-level" style="background-color: {{ color }};">
+                {{ category }}
+            </div>
+        </div>
+
+        <!-- ✅ EMISSION BAR (MOVED HERE) -->
+        <div class="emission-bar">
+
+            <div class="level low {% if category == 'Low Emission' %}active{% endif %}">
+                <span>Low</span>
+                <small>Below 150 g/km</small>
+            </div>
+
+            <div class="level moderate {% if category == 'Moderate Emission' %}active{% endif %}">
+                <span>Moderate</span>
+                <small>150 to 250 g/km</small>
+            </div>
+
+            <div class="level high {% if category == 'High Emission' %}active{% endif %}">
+                <span>High</span>
+                <small>Above 250 g/km</small>
+            </div>
+
+        </div>
+
+        <!-- SUGGESTIONS -->
+        <h3>Suggestions</h3>
+        <ul class="suggestions">
+            {% for tip in suggestions %}
+            <li>{{ tip }}</li>
+            {% endfor %}
+        </ul>
+
+        <a href="/" class="back-btn">Back</a>
+
+    </div>
+</div>
+
+</body>
+</html>

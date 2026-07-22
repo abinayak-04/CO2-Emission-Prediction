@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CO₂ Emission Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: url("{{ url_for('static', filename='bg.jpg') }}") no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+
+        /* Dark overlay for professional look */
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: -1;
+        }
+
+        .container {
+            padding: 60px 20px;
+            text-align: center;
+            animation: fadeIn 1.2s ease-in-out;
+        }
+
+        h1 {
+            color: #ffffff;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .subtitle {
+            color: #dddddd;
+            font-size: 18px;
+            margin-bottom: 50px;
+        }
+
+        .levels {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 60px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.12);
+            backdrop-filter: blur(15px);
+            padding: 30px;
+            border-radius: 15px;
+            width: 260px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            transition: 0.3s;
+            color: white;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .card img {
+            width: 80px;
+            margin-bottom: 15px;
+        }
+
+        .low h2 { color: #2ecc71; }
+        .moderate h2 { color: #f39c12; }
+        .high h2 { color: #e74c3c; }
+
+        .card p {
+            color: #f0f0f0;
+            font-size: 14px;
+        }
+
+        .btn {
+            padding: 15px 40px;
+            background: linear-gradient(45deg, #1e3c72, #2a5298);
+            border: none;
+            border-radius: 8px;
+            font-size: 18px;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .btn:hover {
+            background: linear-gradient(45deg, #16315a, #1e3c72);
+            transform: scale(1.05);
+        }
+
+        footer {
+            margin-top: 60px;
+            font-size: 14px;
+            color: #cccccc;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(25px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .levels {
+                flex-direction: column;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <h1>CO₂ Emission Prediction System</h1>
+    <p class="subtitle">
+        Predict automobile CO₂ emissions using Machine Learning
+    </p>
+
+    <div class="levels">
+
+        <div class="card low">
+            <h2>Low Emission</h2>
+            <p><strong>Below 150 g/km</strong></p>
+            <p>Eco-friendly vehicles with minimal environmental impact.</p>
+        </div>
+
+        <div class="card moderate">
+            <h2>Moderate Emission</h2>
+            <p><strong>150 – 250 g/km</strong></p>
+            <p>Standard vehicles with average fuel consumption.</p>
+        </div>
+
+        <div class="card high">
+            <h2>High Emission</h2>
+            <p><strong>Above 250 g/km</strong></p>
+            <p>High environmental impact and fuel consumption.</p>
+        </div>
+
+    </div>
+
+    <a href="/predict-page" class="btn">Start CO₂ Prediction</a>
+
+
+</div>
+
+</body>
+</html>
